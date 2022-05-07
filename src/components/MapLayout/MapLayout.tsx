@@ -15,11 +15,11 @@ export const MapLayout: React.FC<IMapLayoutProps> = (props) => {
 
   return (
     <div className={styles['container']}>
-      <div className={classNames(styles['fallback'], !load && styles['fallback-show'])}>
-        <Fallback />
-      </div>
       <div className={classNames(styles['map'], load && styles['map-show'])}>
         {children}
+      </div>
+      <div className={classNames(styles['fallback'], !load && styles['fallback-show'])}>
+        <Fallback />
       </div>
     </div>
   );
