@@ -17,4 +17,5 @@
 .fallback-show,
 .map-show {
   opacity: 1;
+  pointer-events: initial;
 }
