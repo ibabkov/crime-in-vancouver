@@ -6,9 +6,9 @@ export const HEATMAP_PAINT_OPTIONS: HeatmapPaint = {
     ['linear'],
     ['zoom'],
     13,
-    0.01,
+    0.04,
     14,
-    0.005,
+    0.03,
   ],
   'heatmap-color': [
     'interpolate',

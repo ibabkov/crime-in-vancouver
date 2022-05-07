@@ -10,11 +10,12 @@
 .fallback,
 .map {
   position: absolute;
-  opacity: 1;
-}
-
-.fallback-hidden,
-.map-hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+.fallback-show,
+.map-show {
+  opacity: 1;
+  pointer-events: initial;
 }

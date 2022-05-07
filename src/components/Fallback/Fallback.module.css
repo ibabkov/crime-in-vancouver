@@ -9,7 +9,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  animation: fade-in 2s linear;
 }
 
 .advice {
@@ -17,6 +16,7 @@
   top: 20px;
   font-size: 20px;
   padding: 0 20px;
+  animation: fade-in 2s linear;
 }
 
 .advice-title {
@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: row;
   font-size: 24px;
+  animation: fade-in 2s linear;
 }
 
 .loader::after {
@@ -42,7 +43,7 @@
   padding-left: 8px;
   letter-spacing: 4px;
   text-align: left;
-  animation: pulse 0.9s linear infinite;
+  animation: fade-in 2s linear, pulse 0.9s linear infinite;
 }
 
 @keyframes pulse {
