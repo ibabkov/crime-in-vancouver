@@ -18,7 +18,7 @@ export const MapLayout: React.FC<IMapLayoutProps> = (props) => {
       <div className={styles['fallback']}>
         <Fallback />
       </div>
-      <div className={classNames(styles['map'], !load && styles['map-hidden'])}>
+      <div className={classNames(styles['map'], load && styles['map-show'])}>
         {children}
       </div>
     </div>
