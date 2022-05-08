@@ -43,7 +43,7 @@
   padding-left: 8px;
   letter-spacing: 4px;
   text-align: left;
-  animation: pulse 0.9s linear infinite;
+  animation: fade-in 2s linear, pulse 0.9s linear infinite;
 }
 
 @keyframes pulse {
