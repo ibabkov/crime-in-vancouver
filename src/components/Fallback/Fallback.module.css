@@ -13,8 +13,8 @@
 
 .advice {
   position: absolute;
-  top: 20px;
-  font-size: 28px;
+  top: 28px;
+  font-size: 20px;
   padding: 0 20px;
   animation: fade-in 2s linear;
 }
