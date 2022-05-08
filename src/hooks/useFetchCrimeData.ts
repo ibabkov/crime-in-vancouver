@@ -14,9 +14,11 @@ function dataReducer(
   data: FeatureCollection<Point>,
   action: { payload: Feature<Point>[] }
 ): FeatureCollection<Point> {
-  const { payload = [] } = action;
+  const { payload = data.features } = action;
 
-  return { ...data, features: payload };
+  data.features = payload;
+
+  return data;
 }
 
 export const useFetchCrimeData = () => {
@@ -29,13 +31,14 @@ export const useFetchCrimeData = () => {
     csv(CRIMES_DATA_URL, (error, response) => {
       if (!error) {
         dispatchData({
-          payload: response.map(
-            ({ lat, lon }) =>
-              ({
-                type: 'Feature',
-                geometry: { type: 'Point', coordinates: [lon, lat] },
-              } as unknown as Feature<Point>)
-          ),
+          payload: response.map(({ lat, lon }, i) => {
+            delete response[i];
+
+            return {
+              type: 'Feature',
+              geometry: { type: 'Point', coordinates: [lon, lat] },
+            } as unknown as Feature<Point>;
+          }),
         });
       }
     });
