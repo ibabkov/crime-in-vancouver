@@ -8,6 +8,9 @@ Interactive heat map of crimes committed in Vancouver from 2003 to 2017.
 - You can zoom, rotate and pan a map
 - Switching between heatmap and points representation(depends on zoom level)
 
+## Acknowledgements
+- [Crime in Vancouver Dataset](https://www.kaggle.com/datasets/wosaku/crime-in-vancouver)
+
 ## Getting Started
 
 First, run the development server:
