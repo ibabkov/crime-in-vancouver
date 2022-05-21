@@ -1,12 +1,13 @@
 # crime-in-vancouver
 
-Interactive heat map of crimes committed in Vancouver from 2003 to 2017.
+An interactive heatmap of crime committed in Vancouver from 2003 to 2017.
 
 ## Main features
-- 3D interactive map of Vancouver(with buildings)
-- Visualization of large data set(> 100 000 points)
-- You can zoom, rotate and pan a map
-- Switching between heatmap and points representation(depends on zoom level)
+- 3D interactive map of Vancouver
+- High-detailed map with buildings
+- Visualization of large data set (> 100 000 points)
+- You can zoom, rotate and pan the map
+- Switching between heatmap and points representation that depends on a zoom level
 
 ## Acknowledgements
 - [Crime in Vancouver Dataset](https://www.kaggle.com/datasets/wosaku/crime-in-vancouver)
