@@ -21,6 +21,7 @@ export function ApplicationContainer() {
   const handleLoad = React.useCallback(() => setLoad(true), [setLoad]);
 
   console.log(crimeData);
+
   return (
     <MapLayout load={load}>
       <Map
