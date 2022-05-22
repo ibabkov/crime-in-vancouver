@@ -16,17 +16,12 @@ import {
 import { MapLayout } from '../../components/MapLayout';
 
 export function ApplicationContainer(props: any) {
-  const [load, setLoad] = React.useState(false);
-  const [data, setData] = React.useState(false);
+  const [mapLoad, setMapLoad] = React.useState(false);
   const crimeData = useFetchCrimeData();
-  const handleLoad = React.useCallback(() => setLoad(true), [setLoad]);
-
-  if (!crimeData) {
-    return null;
-  }
+  const handleLoad = React.useCallback(() => setMapLoad(true), [setMapLoad]);
 
   return (
-    <MapLayout load={load}>
+    <MapLayout dataLoad={Boolean(crimeData)} mapLoad={mapLoad}>
       <Map
         mapboxAccessToken={MAPBOX_TOKEN}
         initialViewState={MAP_INITIAL_VIEW_STATE}
@@ -34,7 +29,7 @@ export function ApplicationContainer(props: any) {
         maxBounds={MAP_BOUNDS}
         onLoad={handleLoad}
       >
-        <Source id={'heatmap-source'} type={'geojson'} data={crimeData} />
+        <Source id={'heatmap-source'} type={'geojson'} data={crimeData!} />
         <Layer
           source={'heatmap-source'}
           id="heatmap-layer"
