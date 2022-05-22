@@ -29,6 +29,8 @@ export function ApplicationContainer() {
         mapStyle={MAP_STYLE}
         maxBounds={MAP_BOUNDS}
         onLoad={handleLoad}
+        onError={(e) => {console.log('error', e)}}
+        onSourceData={(e) => {console.log('sourceData', e)}}
       >
         <Source id={'heatmap-source'} type={'geojson'} data={crimeData}>
           {crimeDataReceived && (
