@@ -16,12 +16,12 @@ import {
 import { MapLayout } from '../../components/MapLayout';
 
 export function ApplicationContainer() {
-  const [load, setLoad] = React.useState(false);
+  const [mapLoad, setMapLoad] = React.useState(false);
   const crimeData = useFetchCrimeData();
-  const handleLoad = React.useCallback(() => setLoad(true), [setLoad]);
+  const handleLoad = React.useCallback(() => setMapLoad(true), [setMapLoad]);
 
   return (
-    <MapLayout load={load}>
+    <MapLayout dataLoad={Boolean(crimeData)} mapLoad={mapLoad}>
       <Map
         mapboxAccessToken={MAPBOX_TOKEN}
         initialViewState={MAP_INITIAL_VIEW_STATE}
@@ -29,20 +29,21 @@ export function ApplicationContainer() {
         maxBounds={MAP_BOUNDS}
         onLoad={handleLoad}
       >
-        <Source id={'heatmap-source'} type={'geojson'} data={crimeData}>
-          <Layer
-            id="heatmap-layer"
-            type="heatmap"
-            maxzoom={15}
-            paint={HEATMAP_PAINT_OPTIONS}
-          />
-          <Layer
-            id="circle-layer"
-            type="circle"
-            minzoom={15}
-            paint={CIRCLE_PAINT_OPTIONS}
-          />
-        </Source>
+        <Source id={'heatmap-source'} type={'geojson'} data={crimeData!} />
+        <Layer
+          source={'heatmap-source'}
+          id="heatmap-layer"
+          type="heatmap"
+          maxzoom={15}
+          paint={HEATMAP_PAINT_OPTIONS}
+        />
+        <Layer
+          source={'heatmap-source'}
+          id="circle-layer"
+          type="circle"
+          minzoom={15}
+          paint={CIRCLE_PAINT_OPTIONS}
+        />
         <Layer
           id="building-layer"
           source="composite"

@@ -7,18 +7,29 @@ import styles from './MapLayout.module.css';
 
 export interface IMapLayoutProps {
   children: React.ReactNode;
-  load: boolean;
+  mapLoad: boolean;
+  dataLoad: boolean;
 }
 
 export const MapLayout: React.FC<IMapLayoutProps> = (props) => {
-  const { children, load } = props;
+  const { children, mapLoad, dataLoad } = props;
+  const fullLoad = dataLoad && mapLoad;
 
   return (
     <div className={styles['container']}>
-      <div className={classNames(styles['map'], load && styles['map-show'])}>
-        {children}
-      </div>
-      <div className={classNames(styles['fallback'], !load && styles['fallback-show'])}>
+      {dataLoad && (
+        <div
+          className={classNames(styles['map'], mapLoad && styles['map-show'])}
+        >
+          {children}
+        </div>
+      )}
+      <div
+        className={classNames(
+          styles['fallback'],
+          !fullLoad && styles['fallback-show']
+        )}
+      >
         <Fallback />
       </div>
     </div>
