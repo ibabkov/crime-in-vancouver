@@ -15,7 +15,7 @@ import {
 } from '../../constants/map';
 import { MapLayout } from '../../components/MapLayout';
 
-export function ApplicationContainer(props: any) {
+export function ApplicationContainer() {
   const [mapLoad, setMapLoad] = React.useState(false);
   const crimeData = useFetchCrimeData();
   const handleLoad = React.useCallback(() => setMapLoad(true), [setMapLoad]);

@@ -5,27 +5,7 @@ import { FeatureCollection, Feature, Point } from 'geojson';
 
 import { CRIMES_DATA_URL } from '../constants/crimeData';
 
-const INITIAL_CRIME_DATA: FeatureCollection<Point> = {
-  type: 'FeatureCollection',
-  features: [],
-};
-
-function dataReducer(
-  data: FeatureCollection<Point>,
-  action: { payload: Feature<Point>[] }
-): FeatureCollection<Point> {
-  const { payload = data.features } = action;
-
-  data.features = payload;
-
-  return data;
-}
-
 export const useFetchCrimeData = () => {
-  // const [data, dispatchData] = React.useReducer(
-  //   dataReducer,
-  //   INITIAL_CRIME_DATA
-  // );
   const [data, setData] = React.useState<FeatureCollection<Point> | null>(null);
 
   React.useEffect(() => {
