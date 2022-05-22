@@ -14,15 +14,24 @@ export interface IMapLayoutProps {
 export const MapLayout: React.FC<IMapLayoutProps> = (props) => {
   const { children, mapLoad, dataLoad } = props;
 
-  console.log(dataLoad, mapLoad)
+  console.log(dataLoad, mapLoad);
 
   return (
     <div className={styles['container']}>
       {/*<div className={classNames(styles['map'], mapLoad && styles['map-show'])}>*/}
-      {dataLoad && <div className={classNames(styles['map'], mapLoad && styles['map-show'])}>
-        {children}
-      </div>}
-      <div className={classNames(styles['fallback'], !(dataLoad && mapLoad) && styles['fallback-show'])}>
+      {dataLoad && (
+        <div
+          className={classNames(styles['map'], mapLoad && styles['map-show'])}
+        >
+          {children}
+        </div>
+      )}
+      <div
+        className={classNames(
+          styles['fallback'],
+          !(dataLoad && mapLoad) && styles['fallback-show']
+        )}
+      >
         <Fallback />
       </div>
     </div>
