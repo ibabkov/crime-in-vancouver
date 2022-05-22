@@ -20,7 +20,7 @@ export function ApplicationContainer() {
   const crimeData = useFetchCrimeData();
   const handleLoad = React.useCallback(() => setLoad(true), [setLoad]);
 
-  if (!crimeData.features) {
+  if (!crimeData.features.length) {
     return null;
   }
   console.log(crimeData);
