@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Map, Layer, Source } from 'react-map-gl';
+import { InteractiveMap, Layer, Source } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { useFetchCrimeData } from '../../hooks/useFetchCrimeData';
@@ -22,11 +22,10 @@ export function ApplicationContainer() {
 
   return (
     <MapLayout load={load}>
-      <Map
-        mapboxAccessToken={MAPBOX_TOKEN}
-        initialViewState={MAP_INITIAL_VIEW_STATE}
+      <InteractiveMap
+        {...MAP_INITIAL_VIEW_STATE}
+        mapboxApiAccessToken={MAPBOX_TOKEN}
         mapStyle={MAP_STYLE}
-        maxBounds={MAP_BOUNDS}
         onLoad={handleLoad}
       >
         <Source id={'heatmap-source'} type={'geojson'} data={crimeData}>
@@ -52,7 +51,7 @@ export function ApplicationContainer() {
           minzoom={15}
           paint={BUILDING_PAINT_OPTIONS}
         />
-      </Map>
+      </InteractiveMap>
     </MapLayout>
   );
 }
