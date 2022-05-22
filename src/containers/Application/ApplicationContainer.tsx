@@ -18,12 +18,8 @@ import { MapLayout } from '../../components/MapLayout';
 export function ApplicationContainer() {
   const [load, setLoad] = React.useState(false);
   const crimeData = useFetchCrimeData();
+  const crimeDataReceived = Boolean(crimeData.features.length);
   const handleLoad = React.useCallback(() => setLoad(true), [setLoad]);
-
-  if (!crimeData.features.length) {
-    return null;
-  }
-  console.log(crimeData);
 
   return (
     <MapLayout load={load}>
@@ -35,20 +31,24 @@ export function ApplicationContainer() {
         onLoad={handleLoad}
       >
         <Source id={'heatmap-source'} type={'geojson'} data={crimeData}>
-          <Layer
-            source={'heatmap-source'}
-            id="heatmap-layer"
-            type="heatmap"
-            maxzoom={15}
-            paint={HEATMAP_PAINT_OPTIONS}
-          />
-          <Layer
-            source={'heatmap-source'}
-            id="circle-layer"
-            type="circle"
-            minzoom={15}
-            paint={CIRCLE_PAINT_OPTIONS}
-          />
+          {crimeDataReceived && (
+            <>
+              <Layer
+                source={'heatmap-source'}
+                id="heatmap-layer"
+                type="heatmap"
+                maxzoom={15}
+                paint={HEATMAP_PAINT_OPTIONS}
+              />
+              <Layer
+                source={'heatmap-source'}
+                id="circle-layer"
+                type="circle"
+                minzoom={15}
+                paint={CIRCLE_PAINT_OPTIONS}
+              />
+            </>
+          )}
         </Source>
         <Layer
           id="building-layer"
