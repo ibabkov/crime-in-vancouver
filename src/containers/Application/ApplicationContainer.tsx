@@ -36,26 +36,21 @@ export function ApplicationContainer() {
           console.log('sourceData', e);
         }}
       >
-        <Source id={'heatmap-source'} type={'geojson'} data={crimeData}>
-          {crimeDataReceived && (
-            <>
-              <Layer
-                source={'heatmap-source'}
-                id="heatmap-layer"
-                type="heatmap"
-                maxzoom={15}
-                paint={HEATMAP_PAINT_OPTIONS}
-              />
-              <Layer
-                source={'heatmap-source'}
-                id="circle-layer"
-                type="circle"
-                minzoom={15}
-                paint={CIRCLE_PAINT_OPTIONS}
-              />
-            </>
-          )}
-        </Source>
+        <Source id={'heatmap-source'} type={'geojson'} data={crimeData}/>
+        <Layer
+          source={'heatmap-source'}
+          id="heatmap-layer"
+          type="heatmap"
+          maxzoom={15}
+          paint={HEATMAP_PAINT_OPTIONS}
+        />
+        <Layer
+          source={'heatmap-source'}
+          id="circle-layer"
+          type="circle"
+          minzoom={15}
+          paint={CIRCLE_PAINT_OPTIONS}
+        />
         <Layer
           id="building-layer"
           source="composite"
