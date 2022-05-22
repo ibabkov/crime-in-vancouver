@@ -18,7 +18,6 @@ import { MapLayout } from '../../components/MapLayout';
 export function ApplicationContainer() {
   const [load, setLoad] = React.useState(false);
   const crimeData = useFetchCrimeData();
-  const crimeDataReceived = Boolean(crimeData.features.length);
   const handleLoad = React.useCallback(() => setLoad(true), [setLoad]);
 
   return (
@@ -29,14 +28,8 @@ export function ApplicationContainer() {
         mapStyle={MAP_STYLE}
         maxBounds={MAP_BOUNDS}
         onLoad={handleLoad}
-        onError={(e) => {
-          console.log('error', e);
-        }}
-        onSourceData={(e) => {
-          console.log('sourceData', e);
-        }}
       >
-        <Source id={'heatmap-source'} type={'geojson'} data={crimeData}/>
+        <Source id={'heatmap-source'} type={'geojson'} data={crimeData} />
         <Layer
           source={'heatmap-source'}
           id="heatmap-layer"
