@@ -22,16 +22,18 @@ function dataReducer(
 }
 
 export const useFetchCrimeData = () => {
-  const [data, dispatchData] = React.useReducer(
-    dataReducer,
-    INITIAL_CRIME_DATA
-  );
+  // const [data, dispatchData] = React.useReducer(
+  //   dataReducer,
+  //   INITIAL_CRIME_DATA
+  // );
+  const [data, setData] = React.useState<FeatureCollection<Point> | null>(null);
 
   React.useEffect(() => {
     csv(CRIMES_DATA_URL, (error, response) => {
       if (!error) {
-        dispatchData({
-          payload: response.map(({ lat, lon }, i) => {
+        setData({
+          type: 'FeatureCollection',
+          features: response.map(({ lat, lon }, i) => {
             delete response[i];
 
             return {
