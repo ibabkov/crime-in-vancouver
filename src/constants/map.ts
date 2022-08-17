@@ -14,5 +14,4 @@ export const MAP_INITIAL_VIEW_STATE = {
 
 export const MAP_STYLE = 'mapbox://styles/mapbox/dark-v10';
 
-export const MAPBOX_TOKEN =
-  'pk.eyJ1Ijoic2luZGVzMjU1IiwiYSI6ImNrc2FsazdndzBjYW8yb28zdzdnMDk5YWQifQ.m9gSKlbl9DaYBESMm8qy8A';
+export const MAPBOX_ACCESS_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
