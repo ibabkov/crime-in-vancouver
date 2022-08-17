@@ -11,7 +11,7 @@ import {
   MAP_BOUNDS,
   MAP_INITIAL_VIEW_STATE,
   MAP_STYLE,
-  MAPBOX_TOKEN,
+  MAPBOX_ACCESS_TOKEN,
 } from '../../constants/map';
 import { MapLayout } from '../../components/MapLayout';
 
@@ -23,7 +23,7 @@ export function ApplicationContainer() {
   return (
     <MapLayout dataLoad={Boolean(crimeData)} mapLoad={mapLoad}>
       <Map
-        mapboxAccessToken={MAPBOX_TOKEN}
+        mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
         initialViewState={MAP_INITIAL_VIEW_STATE}
         mapStyle={MAP_STYLE}
         maxBounds={MAP_BOUNDS}
