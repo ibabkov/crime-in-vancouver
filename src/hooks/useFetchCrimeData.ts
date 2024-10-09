@@ -3,13 +3,13 @@ import React from 'react';
 import { csv } from 'd3-request';
 import { FeatureCollection, Feature, Point } from 'geojson';
 
-import { CRIMES_DATA_URL } from '../constants/crimeData';
+import { CRIMES_DATA_API_URL } from '../constants/crimeData';
 
 export const useFetchCrimeData = () => {
 	const [data, setData] = React.useState<FeatureCollection<Point> | null>(null);
 
 	React.useEffect(() => {
-		csv(CRIMES_DATA_URL, (error, response) => {
+		csv(CRIMES_DATA_API_URL, (error, response) => {
 			if (!error) {
 				setData({
 					type: 'FeatureCollection',
