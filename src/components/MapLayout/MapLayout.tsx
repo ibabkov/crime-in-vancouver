@@ -5,13 +5,13 @@ import classNames from 'classnames';
 import { Fallback } from '../Fallback';
 import styles from './MapLayout.module.css';
 
-export interface IMapLayoutProps {
+export type MapLayoutProps = {
 	children: React.ReactNode;
 	mapLoad: boolean;
 	dataLoad: boolean;
-}
+};
 
-export const MapLayout: React.FC<IMapLayoutProps> = props => {
+export const MapLayout: React.FC<MapLayoutProps> = props => {
 	const { children, mapLoad, dataLoad } = props;
 	const fullLoad = dataLoad && mapLoad;
 
