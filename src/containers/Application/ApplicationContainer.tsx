@@ -20,19 +20,20 @@ import {
 import { MapLayout } from '../../components/MapLayout';
 
 export function ApplicationContainer() {
-	const [mapLoad, setMapLoad] = React.useState(false);
-	const crimeData = useFetchCrimeData();
+	const [mapLoaded, setMapLoaded] = React.useState(false);
+	const [crimeData, dataLoadingProgress] = useFetchCrimeData();
+	const dataLoaded = Boolean(crimeData) && [-1, 1].includes(dataLoadingProgress);
 	const handleLoad = React.useCallback(
 		({ target: map }: MapEvent) => {
-			setMapLoad(true);
+			setMapLoaded(true);
 			map.addSource('mapbox-dem', { type: 'raster-dem', url: MAP_3D_TERRAIN, tileSize: 512, maxzoom: MAP_MAX_ZOOM });
 			map.setTerrain({ source: 'mapbox-dem', exaggeration: ['interpolate', ['linear'], ['zoom'], MAP_MIN_ZOOM, 1.5, MAP_MAX_ZOOM, 0.4] });
 		},
-		[setMapLoad],
+		[setMapLoaded],
 	);
 
 	return (
-		<MapLayout dataLoad={Boolean(crimeData)} mapLoad={mapLoad}>
+		<MapLayout dataLoaded={dataLoaded} loadingProgress={dataLoadingProgress} mapLoaded={mapLoaded}>
 			<Map
 				mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
 				initialViewState={MAP_INITIAL_VIEW_STATE}

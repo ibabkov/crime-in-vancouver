@@ -1,2 +1,4 @@
 // Source data CSV
-export const CRIMES_DATA_API_URL = '/data.csv';
+import { constructCdnUrl } from '../utils';
+
+export const CRIMES_DATA_API_URL = constructCdnUrl('/public/data.csv');
