@@ -1,9 +1,7 @@
-import type { NextPage } from 'next';
+'use client';
 
 import { ApplicationContainer } from '../containers/Application';
 
-const MainPage: NextPage = () => {
+export default function Page() {
 	return <ApplicationContainer />;
-};
-
-export default MainPage;
+}

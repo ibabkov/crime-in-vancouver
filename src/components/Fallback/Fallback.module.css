@@ -61,7 +61,6 @@
 	transform: scaleX(0);
 }
 
-
 .loader {
 	display: flex;
 	flex-direction: row;

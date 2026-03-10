@@ -14,6 +14,7 @@ export const useFetchCrimeData = (): [FeatureCollection<Point> | null, number] =
 
 		csv(CRIMES_DATA_API_URL, (error, response) => {
 			if (!error) {
+				setProgress(1);
 				setData({
 					type: 'FeatureCollection',
 					features: response.map(({ lat, lon }, i) => {
@@ -28,7 +29,7 @@ export const useFetchCrimeData = (): [FeatureCollection<Point> | null, number] =
 			}
 		}).on('progress', event => {
 			if (event.lengthComputable) {
-				setProgress(event.loaded / event.total);
+				setProgress(Math.min((event.loaded / event.total) * 0.99, 0.99));
 			}
 		});
 	}, []);

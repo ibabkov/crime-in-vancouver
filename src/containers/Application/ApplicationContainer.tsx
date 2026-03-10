@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 
-import { Map, Layer, Source, MapEvent } from 'react-map-gl';
+import Map, { Layer, Source, MapEvent } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { useFetchCrimeData } from '../../hooks/useFetchCrimeData';
